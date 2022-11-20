@@ -36,6 +36,7 @@ const pecas = {
     }
 }
 
+const robo = document.querySelector("[data-cor]");
 
 
 controle.forEach( (elemento) => {
@@ -64,3 +65,20 @@ function atualizaEstatistica(peca){
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     } )
 }
+
+
+robo.addEventListener("click", () => { mudaCor() })
+
+function mudaCor(){
+    var corAtual = robo.dataset.cor;
+    var i = ordemCor.indexOf(corAtual) + 1;
+    if(i == ordemCor.length){
+        i = 0;
+    }
+
+    robo.dataset.cor = ordemCor[i];
+    robo.src = "img/Robotron2000" + robo.dataset.cor + ".png"
+
+}
+
+const ordemCor = ["amarelo", "azul", "branco", "preto", "rosa", "vermelho"];
